@@ -1,25 +1,29 @@
 package in.bushansirgur.billingsoftware.config;
 
 import io.github.cdimascio.dotenv.Dotenv;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Configuration;
+import java.nio.file.Paths;
 
 /**
  * Load environment variables from .env file for local development.
- * This ensures Spring Boot can access credentials and configuration
- * from the .env file without requiring system-level environment variables.
+ * This initializer runs BEFORE Spring Boot starts, ensuring all
+ * environment variables are available for property resolution.
  */
-@Configuration
-@Slf4j
 public class EnvConfig {
 
     static {
         try {
+            // Try to load .env from multiple locations
+            String envPath = System.getProperty("user.dir");
+            
+            System.out.println("🔍 Current working directory: " + envPath);
+            System.out.println("🔍 Looking for .env file...");
+            
             Dotenv dotenv = Dotenv.configure()
+                    .directory(envPath)
                     .ignoreIfMissing()
                     .load();
             
-            log.info("✓ .env file loaded successfully");
+            System.out.println("✓ .env file loaded successfully");
             
             // Set individual known environment variables
             String[] envVars = {
@@ -31,20 +35,29 @@ public class EnvConfig {
                     "SPRING_PROFILES_ACTIVE"
             };
             
+            int loaded = 0;
             for (String varName : envVars) {
                 String value = dotenv.get(varName);
                 if (value != null && !value.isEmpty()) {
                     System.setProperty(varName, value);
+                    loaded++;
                     if (varName.contains("SECRET") || varName.contains("PASSWORD") || varName.contains("KEY")) {
-                        log.debug("Loaded env variable: {}", varName);
+                        System.out.println("  ✓ " + varName);
                     } else {
-                        log.debug("Loaded env variable: {} = {}", varName, value);
+                        System.out.println("  ✓ " + varName + " = " + value);
                     }
                 }
             }
+            
+            System.out.println("\n✓ Loaded " + loaded + " environment variables");
+            
+            // Debug: Verify DB_URL was set
+            String dbUrl = System.getProperty("DB_URL");
+            System.out.println("🔍 DB_URL in system properties = " + dbUrl);
+            
         } catch (Exception e) {
-            log.warn("⚠️  Could not load .env file. Using system environment variables instead.");
-            log.debug("Error details: {}", e.getMessage());
+            System.err.println("⚠️  Could not load .env file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
