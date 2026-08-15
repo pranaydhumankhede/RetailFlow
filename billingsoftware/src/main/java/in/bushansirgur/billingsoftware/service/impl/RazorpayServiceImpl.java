@@ -39,6 +39,14 @@ public class RazorpayServiceImpl implements RazorpayService {
      */
     @PostConstruct
     public void validateRazorpayCredentials() {
+        // Trim whitespace from credentials loaded from environment
+        if (razorpayKeyId != null) {
+            razorpayKeyId = razorpayKeyId.trim();
+        }
+        if (razorpayKeySecret != null) {
+            razorpayKeySecret = razorpayKeySecret.trim();
+        }
+
         isRazorpayConfigured = razorpayKeyId != null && !razorpayKeyId.isBlank() &&
                 razorpayKeySecret != null && !razorpayKeySecret.isBlank();
 
@@ -49,6 +57,7 @@ public class RazorpayServiceImpl implements RazorpayService {
             log.warn("   Payment endpoints will return errors until configured");
         } else {
             log.info("✓ Razorpay integration configured successfully");
+            log.debug("Razorpay Key ID starts with: {}", razorpayKeyId.substring(0, Math.min(8, razorpayKeyId.length())));
         }
     }
 
@@ -59,15 +68,43 @@ public class RazorpayServiceImpl implements RazorpayService {
                     "Razorpay is not configured. Set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET environment variables.");
         }
 
-        RazorpayClient razorpayClient = new RazorpayClient(razorpayKeyId, razorpayKeySecret);
-        JSONObject orderRequest = new JSONObject();
-        orderRequest.put("amount", amount * 100);
-        orderRequest.put("currency", currency);
-        orderRequest.put("receipt", "order_rcptid_" + System.currentTimeMillis());
-        orderRequest.put("payment_capture", 1);
+        try {
+            // Debug: Print exact credentials being used
+            String keyId = razorpayKeyId != null ? razorpayKeyId : "NULL";
+            String keySecret = razorpayKeySecret != null ? razorpayKeySecret : "NULL";
+            
+            System.out.println("\n=== RAZORPAY DEBUG ===");
+            System.out.println("Key ID: [" + keyId + "]");
+            System.out.println("Key ID length: " + keyId.length());
+            System.out.println("Key ID bytes: " + java.util.Arrays.toString(keyId.getBytes()));
+            System.out.println("Key Secret: [" + keySecret + "]");
+            System.out.println("Key Secret length: " + keySecret.length());
+            System.out.println("Key Secret bytes: " + java.util.Arrays.toString(keySecret.getBytes()));
+            System.out.println("Amount: " + amount);
+            System.out.println("Currency: " + currency);
+            System.out.println("======================\n");
+            
+            log.debug("Creating Razorpay order - Amount: " + amount + ", Currency: " + currency);
+            
+            RazorpayClient razorpayClient = new RazorpayClient(keyId, keySecret);
+            JSONObject orderRequest = new JSONObject();
+            orderRequest.put("amount", amount * 100);
+            orderRequest.put("currency", currency);
+            orderRequest.put("receipt", "order_rcptid_" + System.currentTimeMillis());
+            orderRequest.put("payment_capture", 1);
 
-        Order order = razorpayClient.orders.create(orderRequest);
-        return convertToResponse(order);
+            log.debug("Order request payload: " + orderRequest.toString());
+            Order order = razorpayClient.orders.create(orderRequest);
+            log.debug("Order created successfully with ID: " + order.get("id"));
+            return convertToResponse(order);
+        } catch (RazorpayException e) {
+            System.out.println("\n!!! RAZORPAY ERROR !!!");
+            System.out.println("Message: " + e.getMessage());
+            System.out.println("Exception: " + e);
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!\n");
+            log.error("Razorpay API error: " + e.getMessage());
+            throw e;
+        }
     }
 
     private RazorpayOrderResponse convertToResponse(Order order) {

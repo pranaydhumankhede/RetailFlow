@@ -42,9 +42,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/login", "/encode", "/uploads/**", "/error")
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/login", "/encode", "/uploads/**", "/error", "/payments/**")
                         .permitAll()
-                        .requestMatchers("/categories", "/items", "/orders", "/payments", "/dashboard")
+                        .requestMatchers("/categories", "/items", "/orders", "/dashboard")
                         .hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
