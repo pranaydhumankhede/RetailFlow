@@ -105,33 +105,33 @@ Displays previous orders with order ID, customer information, items, total amoun
 Project Structure
 
 RetailFlow/
-├── billingsoftware/              # Spring Boot backend
-│   ├── src/main/java/
-│   │   └── in/bushansirgur/billingsoftware/
-│   │       ├── config/           # Security, AWS and static resource configuration
-│   │       ├── controller/       # REST controllers
-│   │       ├── entity/           # JPA entities
-│   │       ├── filter/           # JWT request filter
-│   │       ├── io/               # Request/response DTOs
-│   │       ├── repository/       # JPA repositories
-│   │       ├── service/          # Service interfaces
-│   │       ├── service/impl/     # Service implementations
-│   │       └── util/             # JWT utilities
-│   ├── src/main/resources/
-│   │   └── application.properties
-│   ├── pom.xml
-│   └── .gitignore
+├── billingsoftware/ # Spring Boot backend
+│ ├── src/main/java/
+│ │ └── in/pranay/billingsoftware/
+│ │ ├── config/ # Security, AWS and static resource configuration
+│ │ ├── controller/ # REST controllers
+│ │ ├── entity/ # JPA entities
+│ │ ├── filter/ # JWT request filter
+│ │ ├── io/ # Request/response DTOs
+│ │ ├── repository/ # JPA repositories
+│ │ ├── service/ # Service interfaces
+│ │ ├── service/impl/ # Service implementations
+│ │ └── util/ # JWT utilities
+│ ├── src/main/resources/
+│ │ └── application.properties
+│ ├── pom.xml
+│ └── .gitignore
 │
-├── client/                       # React frontend
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── Service/
-│   │   └── util/
-│   ├── package.json
-│   └── vite.config.js
+├── client/ # React frontend
+│ ├── src/
+│ │ ├── components/
+│ │ ├── pages/
+│ │ ├── Service/
+│ │ └── util/
+│ ├── package.json
+│ └── vite.config.js
 │
-└── billing_app.sql               # MySQL database schema
+└── billing_app.sql # MySQL database schema
 
 Backend API
 
@@ -141,29 +141,29 @@ The backend uses the base context path:
 
 Main endpoints include:
 
-POST   /login
-POST   /encode
+POST /login
+POST /encode
 
-GET    /categories
-GET    /items
+GET /categories
+GET /items
 
-GET    /orders/latest
-POST   /orders
+GET /orders/latest
+POST /orders
 DELETE /orders/{id}
 
-POST   /payments/create-order
-POST   /payments/verify
+POST /payments/create-order
+POST /payments/verify
 
-GET    /dashboard
+GET /dashboard
 
-POST   /admin/register
-GET    /admin/users
+POST /admin/register
+GET /admin/users
 DELETE /admin/users/{id}
 
-POST   /admin/categories
+POST /admin/categories
 DELETE /admin/categories/{categoryId}
 
-POST   /admin/items
+POST /admin/items
 DELETE /admin/items/{itemId}
 
 Protected APIs use JWT authentication. Administrative APIs require the ADMIN role.

@@ -1,7 +1,7 @@
-package in.bushansirgur.billingsoftware.service;
+package in.pranay.billingsoftware.service;
 
 import com.razorpay.RazorpayException;
-import in.bushansirgur.billingsoftware.io.RazorpayOrderResponse;
+import in.pranay.billingsoftware.io.RazorpayOrderResponse;
 
 public interface RazorpayService {
 

@@ -1,10 +1,10 @@
-package in.bushansirgur.billingsoftware.service.impl;
+package in.pranay.billingsoftware.service.impl;
 
-import in.bushansirgur.billingsoftware.entity.OrderEntity;
-import in.bushansirgur.billingsoftware.entity.OrderItemEntity;
-import in.bushansirgur.billingsoftware.io.*;
-import in.bushansirgur.billingsoftware.repository.OrderEntityRepository;
-import in.bushansirgur.billingsoftware.service.OrderService;
+import in.pranay.billingsoftware.entity.OrderEntity;
+import in.pranay.billingsoftware.entity.OrderItemEntity;
+import in.pranay.billingsoftware.io.*;
+import in.pranay.billingsoftware.repository.OrderEntityRepository;
+import in.pranay.billingsoftware.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

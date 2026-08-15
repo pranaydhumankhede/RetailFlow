@@ -1,7 +1,7 @@
-package in.bushansirgur.billingsoftware.entity;
+package in.pranay.billingsoftware.entity;
 
-import in.bushansirgur.billingsoftware.io.PaymentDetails;
-import in.bushansirgur.billingsoftware.io.PaymentMethod;
+import in.pranay.billingsoftware.io.PaymentDetails;
+import in.pranay.billingsoftware.io.PaymentMethod;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

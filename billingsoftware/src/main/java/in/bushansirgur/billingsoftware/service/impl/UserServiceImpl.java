@@ -1,10 +1,10 @@
-package in.bushansirgur.billingsoftware.service.impl;
+package in.pranay.billingsoftware.service.impl;
 
-import in.bushansirgur.billingsoftware.entity.UserEntity;
-import in.bushansirgur.billingsoftware.io.UserRequest;
-import in.bushansirgur.billingsoftware.io.UserResponse;
-import in.bushansirgur.billingsoftware.repository.UserRepository;
-import in.bushansirgur.billingsoftware.service.UserService;
+import in.pranay.billingsoftware.entity.UserEntity;
+import in.pranay.billingsoftware.io.UserRequest;
+import in.pranay.billingsoftware.io.UserResponse;
+import in.pranay.billingsoftware.repository.UserRepository;
+import in.pranay.billingsoftware.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;

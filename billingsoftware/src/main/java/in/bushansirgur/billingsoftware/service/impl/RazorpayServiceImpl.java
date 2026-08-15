@@ -1,11 +1,11 @@
-package in.bushansirgur.billingsoftware.service.impl;
+package in.pranay.billingsoftware.service.impl;
 
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
-import in.bushansirgur.billingsoftware.io.OrderResponse;
-import in.bushansirgur.billingsoftware.io.RazorpayOrderResponse;
-import in.bushansirgur.billingsoftware.service.RazorpayService;
+import in.pranay.billingsoftware.io.OrderResponse;
+import in.pranay.billingsoftware.io.RazorpayOrderResponse;
+import in.pranay.billingsoftware.service.RazorpayService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;

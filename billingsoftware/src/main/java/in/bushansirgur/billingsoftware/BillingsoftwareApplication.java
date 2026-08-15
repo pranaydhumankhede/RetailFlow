@@ -1,6 +1,6 @@
-package in.bushansirgur.billingsoftware;
+package in.pranay.billingsoftware;
 
-import in.bushansirgur.billingsoftware.config.EnvConfig;
+import in.pranay.billingsoftware.config.EnvConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

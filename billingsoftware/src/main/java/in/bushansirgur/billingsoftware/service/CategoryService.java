@@ -1,7 +1,7 @@
-package in.bushansirgur.billingsoftware.service;
+package in.pranay.billingsoftware.service;
 
-import in.bushansirgur.billingsoftware.io.CategoryRequest;
-import in.bushansirgur.billingsoftware.io.CategoryResponse;
+import in.pranay.billingsoftware.io.CategoryRequest;
+import in.pranay.billingsoftware.io.CategoryResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

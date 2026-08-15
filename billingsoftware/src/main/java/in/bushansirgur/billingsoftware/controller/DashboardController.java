@@ -1,8 +1,8 @@
-package in.bushansirgur.billingsoftware.controller;
+package in.pranay.billingsoftware.controller;
 
-import in.bushansirgur.billingsoftware.io.DashboardResponse;
-import in.bushansirgur.billingsoftware.io.OrderResponse;
-import in.bushansirgur.billingsoftware.service.OrderService;
+import in.pranay.billingsoftware.io.DashboardResponse;
+import in.pranay.billingsoftware.io.OrderResponse;
+import in.pranay.billingsoftware.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

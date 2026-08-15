@@ -1,6 +1,6 @@
-package in.bushansirgur.billingsoftware.repository;
+package in.pranay.billingsoftware.repository;
 
-import in.bushansirgur.billingsoftware.entity.ItemEntity;
+import in.pranay.billingsoftware.entity.ItemEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

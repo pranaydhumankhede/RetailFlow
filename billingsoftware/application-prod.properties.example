@@ -62,7 +62,7 @@ server.servlet.session.timeout=30m
 
 # Logging - Production (minimal)
 logging.level.root=WARN
-logging.level.in.bushansirgur=INFO
+logging.level.in.pranay=INFO
 logging.file.name=/var/log/billing-software/app.log
 logging.file.max-size=10MB
 logging.file.max-history=30

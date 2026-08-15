@@ -1,4 +1,4 @@
-package in.bushansirgur.billingsoftware.config;
+package in.pranay.billingsoftware.config;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import java.nio.file.Paths;

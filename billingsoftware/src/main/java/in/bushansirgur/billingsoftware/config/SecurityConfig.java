@@ -1,7 +1,7 @@
-package in.bushansirgur.billingsoftware.config;
+package in.pranay.billingsoftware.config;
 
-import in.bushansirgur.billingsoftware.filter.JwtRequestFilter;
-import in.bushansirgur.billingsoftware.service.impl.AppUserDetailsService;
+import in.pranay.billingsoftware.filter.JwtRequestFilter;
+import in.pranay.billingsoftware.service.impl.AppUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

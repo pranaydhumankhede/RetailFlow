@@ -1,4 +1,4 @@
-package in.bushansirgur.billingsoftware.io;
+package in.pranay.billingsoftware.io;
 
 public enum PaymentMethod {
     CASH, UPI

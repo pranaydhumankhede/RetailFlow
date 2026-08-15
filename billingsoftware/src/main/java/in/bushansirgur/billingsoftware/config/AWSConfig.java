@@ -1,4 +1,4 @@
-package in.bushansirgur.billingsoftware.config;
+package in.pranay.billingsoftware.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
