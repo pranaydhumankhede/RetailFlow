@@ -43,3 +43,6 @@ tmp/
 temp/
 *.tmp
 *.swp
+
+# Password generator - temporary local utility
+billingsoftware/src/main/java/PasswordGenerator.java
