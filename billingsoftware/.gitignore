@@ -34,17 +34,15 @@ build/
 
 ### Secrets & Configuration ###
 # Property files - use environment variables in production
-application.properties
-application-*.properties
-application*.yml
-application*.yaml
+
 .env
 .env.local
 .env.*.local
 !.env.example
 !application.properties.example
 !application-prod.properties.example
-!application-dev.properties.example
+application-dev.properties.example
+application-dev.properties
 
 ### Security Files ###
 # SSL certificates and keys

@@ -29,7 +29,7 @@ server.compression.enabled=true
 server.compression.min-response-size=1024
 
 # SSL/TLS Configuration
-server.ssl.enabled=true
+server.ssl.enabled=false
 
 
 
