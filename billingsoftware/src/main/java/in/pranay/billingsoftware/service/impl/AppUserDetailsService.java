@@ -1,7 +1,6 @@
 package in.pranay.billingsoftware.service.impl;
 
 import in.pranay.billingsoftware.entity.UserEntity;
-import in.pranay.billingsoftware.io.UserResponse;
 import in.pranay.billingsoftware.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

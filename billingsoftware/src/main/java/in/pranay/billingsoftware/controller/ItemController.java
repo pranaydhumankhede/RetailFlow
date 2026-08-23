@@ -1,6 +1,5 @@
 package in.pranay.billingsoftware.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import in.pranay.billingsoftware.io.ItemRequest;
 import in.pranay.billingsoftware.io.ItemResponse;
