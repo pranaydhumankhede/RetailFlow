@@ -30,17 +30,8 @@ server.compression.min-response-size=1024
 
 # SSL/TLS Configuration
 server.ssl.enabled=true
-server.ssl.key-store-type=PKCS12
-server.ssl.key-store=${KEY_STORE_PATH}
-server.ssl.key-store-password=${KEY_STORE_PASSWORD}
-server.ssl.key-alias=tomcat
-server.ssl.key-store-provider=SUN
 
-# AWS Configuration - Production S3
-aws.access.key=${AWS_ACCESS_KEY_ID}
-aws.secret.key=${AWS_SECRET_ACCESS_KEY}
-aws.region=ap-south-1
-aws.bucket.name=${AWS_BUCKET_NAME}
+
 
 # JWT Configuration - Use strong secret from environment
 jwt.secret.key=${JWT_SECRET_KEY}
@@ -51,7 +42,7 @@ razorpay.key.id=${RAZORPAY_KEY_ID}
 razorpay.key.secret=${RAZORPAY_KEY_SECRET}
 
 # Application URLs - Production
-app.upload.base-url=${AWS_CLOUDFRONT_URL}
+
 app.frontend.url=${FRONTEND_URL}
 
 # Security
