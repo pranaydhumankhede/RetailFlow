@@ -1,5 +1,6 @@
 package in.pranay.billingsoftware.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import in.pranay.billingsoftware.io.AuthRequest;
 import in.pranay.billingsoftware.io.AuthResponse;
 import in.pranay.billingsoftware.service.UserService;
@@ -31,6 +32,11 @@ public class AuthController {
 
     private final JwtUtil jwtUtil;
 
+    @Value("${demo.email}")
+    private String demoEmail;
+
+    @Value("${demo.password}")
+    private String demoPassword;
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) throws Exception {
@@ -39,6 +45,22 @@ public class AuthController {
         final String jwtToken = jwtUtil.generateToken(userDetails);
         String role = userService.getUserRole(request.getEmail());
         return new AuthResponse(request.getEmail(), jwtToken, role);
+    }
+    @PostMapping("/guest-login")
+    public AuthResponse guestLogin() throws Exception {
+
+        authenticate(demoEmail, demoPassword);
+
+        final UserDetails userDetails =
+                appUserDetailsService.loadUserByUsername(demoEmail);
+
+        final String jwtToken =
+                jwtUtil.generateToken(userDetails);
+
+        String role =
+                userService.getUserRole(demoEmail);
+
+        return new AuthResponse(demoEmail, jwtToken, role);
     }
 
     private void authenticate(String email, String password) throws Exception {
