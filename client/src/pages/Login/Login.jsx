@@ -1,7 +1,7 @@
 import './Login.css';
 import {useContext, useState} from "react";
 import toast from "react-hot-toast";
-import {login} from "../../Service/AuthService.js";
+import {login, guestLogin} from "../../Service/AuthService.js";
 import {useNavigate} from "react-router-dom";
 import {AppContext} from "../../context/AppContext.jsx";
 
@@ -40,6 +40,29 @@ const Login = () => {
         }
     }
 
+    const onGuestLoginHandler = async () => {
+    setLoading(true);
+
+    try {
+        const response = await guestLogin();
+
+        if (response.status === 200) {
+            toast.success("Guest login successful");
+
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("role", response.data.role);
+
+            setAuthData(response.data.token, response.data.role);
+            navigate("/dashboard");
+        }
+    } catch (error) {
+        console.error(error);
+        toast.error("Guest login failed");
+    } finally {
+        setLoading(false);
+    }
+}
+
     return (
         <div className="bg-light d-flex align-items-center justify-content-center vh-100 login-background">
             <div className="card shoadow-lg w-100" style={{maxWidth: '480px'}}>
@@ -64,11 +87,24 @@ const Login = () => {
                                 </label>
                                 <input type="password" name="password" id="password" placeholder="**********" className="form-control" onChange={onChangeHandler} value={data.password} />
                             </div>
-                            <div className="d-grid">
-                                <button type="sumbit" className="btn btn-dark btn-lg" disabled={loading}>
-                                    {loading ? "Loading..." : "Sign in"}
-                                </button>
-                            </div>
+                            <div className="d-grid gap-2">
+    <button
+        type="submit"
+        className="btn btn-dark btn-lg"
+        disabled={loading}
+    >
+        {loading ? "Loading..." : "Sign in"}
+    </button>
+
+    <button
+        type="button"
+        className="btn btn-outline-secondary btn-lg"
+        onClick={onGuestLoginHandler}
+        disabled={loading}
+    >
+        Login as Guest
+    </button>
+</div>
                         </form>
                     </div>
                 </div>
