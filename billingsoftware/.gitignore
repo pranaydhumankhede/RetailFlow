@@ -92,3 +92,9 @@ ehthumbs.db
 *.sqlite
 *.sqlite3
 *.db-*
+
+# macOS
+.DS_Store
+
+# Temporary password generator
+PasswordGenerator.java

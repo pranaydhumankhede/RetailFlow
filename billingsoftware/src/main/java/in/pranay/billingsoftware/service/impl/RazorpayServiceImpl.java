@@ -69,25 +69,13 @@ public class RazorpayServiceImpl implements RazorpayService {
 
         try {
             // Debug: Print exact credentials being used
-            String keyId = razorpayKeyId != null ? razorpayKeyId : "NULL";
-            String keySecret = razorpayKeySecret != null ? razorpayKeySecret : "NULL";
-            
-            System.out.println("\n=== RAZORPAY DEBUG ===");
-            System.out.println("Key ID: [" + keyId + "]");
-            System.out.println("Key ID length: " + keyId.length());
-            System.out.println("Key ID bytes: " + java.util.Arrays.toString(keyId.getBytes()));
-            System.out.println("Key Secret: [" + keySecret + "]");
-            System.out.println("Key Secret length: " + keySecret.length());
-            System.out.println("Key Secret bytes: " + java.util.Arrays.toString(keySecret.getBytes()));
-            System.out.println("Amount: " + amount);
-            System.out.println("Currency: " + currency);
-            System.out.println("======================\n");
+
             
             log.debug("Creating Razorpay order - Amount: " + amount + ", Currency: " + currency);
             
-            RazorpayClient razorpayClient = new RazorpayClient(keyId, keySecret);
+            RazorpayClient razorpayClient = new RazorpayClient(razorpayKeyId, razorpayKeySecret);
             JSONObject orderRequest = new JSONObject();
-            orderRequest.put("amount", amount * 100);
+            orderRequest.put("amount",(int) Math.round(amount * 100));
             orderRequest.put("currency", currency);
             orderRequest.put("receipt", "order_rcptid_" + System.currentTimeMillis());
             orderRequest.put("payment_capture", 1);
